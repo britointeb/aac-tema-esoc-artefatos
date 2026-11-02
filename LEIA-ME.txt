@@ -1,0 +1,118 @@
+ESOC · ARTEFATOS DAS AQUISIÇÕES COMPLEXAS
+COLOG / Assessoria de Aquisições Complexas · Versão 2
+2 de novembro de 2026
+
+ABERTURA E ARQUIVOS
+
+Abra index.html no navegador. A página, as imagens, a busca e os filtros
+funcionam offline. Os links para as normas abrem as publicações na internet.
+Mantenha estes arquivos e a pasta assets juntos:
+
+  index.html                               Conteúdo, fichas, casos e referências
+  styles.css                               Apresentação em tela e impressão
+  app.js                                   Busca, filtros, navegação e impressão
+  assets/                                  Emblemas, composição de SMEM e fotos
+  LEIA-ME.txt                              Este guia
+  ATUALIZAR_AAC_ESOC_ARTEFATOS_GITHUB.bat  Publicador para Windows
+
+CONTEÚDO E NAVEGAÇÃO
+
+O cabeçalho institucional, o rodapé e o painel Siglas/Referências seguem o
+modelo GCV V9. O menu organiza os conceitos, casos e artefatos em quatro blocos:
+
+  Introdução                                                #inicio
+  1 · Objeto e solução                                      #bloco-1
+      1.1 Aquisição complexa                                #aquisicao
+      1.2 Classificações                                    #classificacoes
+      1.3 Do sistema à contratação                         #conceitos
+  2 · Decisão e processo                                    #bloco-2
+      2.1 Licitação e contratação direta                    #caminhos
+      2.2 Fase preparatória                                 #preparacao
+      2.3 Do ad hoc às três rotas                           #historico
+  3 · Artefatos e rotas                                     #bloco-3
+      3.1 Catálogo de artefatos                             #catalogo
+      3.2 Diálogo competitivo                               #dialogo
+      3.3 Concorrência por técnica e preço                  #concorrencia
+      3.4 Contratação direta                                #contratacao-direta
+      3.5 Mapa e matriz de riscos                           #riscos
+      3.6 Pesquisa e justificativa de preço                 #pesquisa
+  4 · Condições da contratação                              #bloco-4
+      4.1 Sigilo e publicidade                              #sigilo
+      4.2 Forma presencial                                  #presencial
+      4.3 Âmbito internacional                              #internacional
+  Conclusão e quadro comparativo                            #comparar-rotas
+  Siglas/Referências                                         #referencias
+
+CONSULTA E IMPRESSÃO
+
+No fim da página, abra o painel “Siglas/Referências” para consultar as
+siglas, a base bibliográfica, as normas e os créditos das imagens.
+
+Na abertura, escolha “Consultar os artefatos” para acessar as 21 fichas.
+Busque por nome, sigla ou termo e refine pela função no processo.
+Cada ficha informa finalidade, momento, responsáveis, aplicação nas rotas
+e fundamento. Os links ao final levam aos documentos relacionados.
+
+Para rever diretamente a ficha sobre recursos orçamentários, por exemplo,
+abra index.html#ficha-recursos. A lupa ou a tecla / abre a busca em toda a
+página. Use Esc para fechar a busca ou o menu móvel. Os controles do
+cabeçalho permitem recolher e expandir blocos, tópicos e menu.
+
+Use “Imprimir” ou Ctrl+P para imprimir ou salvar em PDF pelo navegador.
+A impressão expande os blocos e inclui as fichas mesmo quando há filtros.
+Ao sair da impressão, a página restaura o estado de leitura.
+
+MANUTENÇÃO
+
+Edite o texto e as fichas em index.html. Preserve os identificadores de
+seções e fichas ao revisar títulos, pois o menu, a busca e os vínculos
+entre os documentos apontam para esses identificadores. Ao incluir uma
+ficha, confira o número exibido no cabeçalho do catálogo. Após alterações
+normativas, revise o fundamento, as referências e a data da edição.
+
+Em assets, colog.webp e aac.webp são os emblemas, smem.webp reúne imagens
+dos sistemas e atmos.jpg e black-hawk.jpg ilustram os casos estudados.
+
+PUBLICAÇÃO PELO BAT
+
+Execute ATUALIZAR_AAC_ESOC_ARTEFATOS_GITHUB.bat na pasta da versão que deseja
+enviar. É necessário Git for Windows com Git Credential Manager e acesso
+de escrita ao repositório abaixo.
+
+  Repositório     https://github.com/britointeb/aac-tema-esoc-artefatos
+  Conta           britointeb
+  Autoria         Brito <britointeb@gmail.com>
+  Branch padrão   main
+
+1. Preencha os três campos. Enter aceita o valor sugerido em cada um.
+   Título da atualização — Enter usa ESOC_ART_V2 nesta pasta.
+   Descrição do que mudou — escreva, por exemplo, “Ajuste do rodapé e das
+   referências”. Enter usa Brito.
+   Branch de destino no GitHub — pressione Enter para usar main ou digite
+   o nome de outra branch. Se o nome for inválido, o BAT pede a branch
+   novamente e conserva o título e a descrição.
+2. Confira o destino, a branch e a lista de arquivos adicionados,
+   modificados ou removidos. A publicação faz a raiz da branch selecionada
+   corresponder à pasta desta versão. Arquivos que existem apenas nessa
+   branch serão removidos da nova versão. O histórico anterior é mantido.
+3. Na pergunta final, digite PUBLICAR em maiúsculas para enviar.
+   Pressione Enter para cancelar. O Git Credential Manager pode solicitar
+   login no navegador.
+4. Ao concluir, confira a branch e o identificador do commit confirmado.
+   A disponibilização do site pelo GitHub Pages depende da configuração
+   de publicação do repositório.
+
+O LEIA-ME acompanha os arquivos enviados. O publicador exclui o próprio
+BAT, os diretórios .git e os arquivos desktop.ini e Thumbs.db. A conferência
+prévia exige index.html, styles.css, app.js e a pasta assets. O BAT aceita
+arquivos regulares com hard links do Google Drive e rejeita links simbólicos,
+junções e arquivos acima de 100 MiB.
+
+Em uma branch existente com conteúdo idêntico, o BAT informa que está
+atualizada. Uma branch nova usa o histórico da branch padrão quando houver.
+Antes do envio, o BAT confere se a branch mudou desde a preparação e, depois
+do envio, verifica o commit no destino.
+
+A cópia de trabalho e a mensagem do commit ficam em uma subpasta datada de
+%LOCALAPPDATA%\AAC-ESOC-Artefatos\Publicacoes. Em uma publicação com histórico
+prévio, o arquivo VERSAO_ANTERIOR.bundle nessa subpasta guarda a versão anterior.

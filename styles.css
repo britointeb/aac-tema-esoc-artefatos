@@ -11077,7 +11077,7 @@ from {
 .es-prose { max-width: 88ch; margin: 0 0 1.25rem; }
 .es-sub { margin: 1.75rem 0 1rem; font-size: clamp(1.35rem,2.5vw,2rem); }
 .es-base { margin: 1.25rem 0 0; padding-top: .8rem; border-top: 1px solid #d1dce2; font-size: .87rem; color: #425764; }
-.es-link,.es-base a,.es-bibliography a { color: #164f75; font-weight: 700; text-decoration: underline; text-underline-offset: .2em; }
+.es-link,.es-base a { color: #164f75; font-weight: 700; text-decoration: underline; text-underline-offset: .2em; }
 .es-chips { display: flex; gap: .45rem; flex-wrap: wrap; margin: .9rem 0 .25rem; }
 .es-chips a { display: inline-block; padding: .35rem .65rem; background: #eef4f7; color: #174e6e; border: 1px solid #ccdce4; border-radius: 4px; font-size: .83rem; }
 .es-chips a:hover { background: #dcebf2; }
@@ -11142,15 +11142,9 @@ from {
 .es-file[open]>summary i { transform: rotate(45deg); }
 .es-record { border-left: 3px solid #ac842c; }
 .es-record dl { display: grid; grid-template-columns: minmax(7.5rem, .36fr) 1fr; gap: .75rem 1.5rem; margin: 1.4rem 0; }
-.es-record dt,.es-gloss dt { color: #174665; font-weight: 700; }
-.es-record dd,.es-gloss dd { margin: 0; line-height: 1.53; }
-.es-references { padding-block: 2.5rem; }
-.es-references h2 { margin: .5rem 0 1.25rem; }
-.es-gloss { display: grid; grid-template-columns: 6rem 1fr; gap: .5rem 1rem; }
-.es-references li { margin: .7rem 0; line-height: 1.5; }
-.es-references ul { padding-left: 1.3rem; }
-.es-bibliography p { margin: .15rem 0; }
-#comparar-rotas,.es-bibliography li { scroll-margin-top: 100px; }
+.es-record dt { color: #174665; font-weight: 700; }
+.es-record dd { margin: 0; line-height: 1.53; }
+#comparar-rotas,.reference-norms li { scroll-margin-top: 100px; }
 @media (max-width: 700px) {
   .es-journey { grid-template-columns: 1fr; }
   .es-journey a { display: flex; align-items: center; gap: .6rem; padding: .6rem .8rem; border-top: 0; }
@@ -11162,8 +11156,7 @@ from {
   .es-family { display: none; }
   .es-record dl { display: block; }
   .es-record dt { margin: .8rem 0 .2rem; }
-  .es-file,#comparar-rotas,.es-bibliography li { scroll-margin-top: 130px; }
-  .es-gloss { grid-template-columns: 4rem 1fr; }
+  .es-file,#comparar-rotas,.reference-norms li { scroll-margin-top: 130px; }
 }
 @media screen and (max-width: 760px) {
   .es-table,.es-table tbody,.es-table tr,.es-table td,.es-table tbody th,.es-table caption { display: block; width: 100%; }

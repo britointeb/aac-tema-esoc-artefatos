@@ -1,4 +1,4 @@
-/* ESOC V1 · navegação, catálogo, busca e impressão locais. */
+/* ESOC V2 · navegação, catálogo, busca e impressão locais. */
 (() => {
   'use strict';
 
@@ -256,7 +256,7 @@
 
   function initSearch() {
     const index = sections.map(section => ({ id: section.id, number: section.dataset.number,
-      label: section.dataset.label, title: $('h1,h2', section).textContent.replace(/\s+/g, ' ').trim(), text: normalize(section.textContent) }));
+      label: section.dataset.label, title: $('h1,h2,summary', section).textContent.replace(/\s+/g, ' ').trim(), text: normalize(section.textContent) }));
     files.forEach((file, i) => index.push({
       id: file.id, number: 'Ficha ' + String(i + 1).padStart(2, '0'),
       label: $('summary strong', file).textContent, title: $('summary small', file).textContent, text: fileIndex.get(file)
