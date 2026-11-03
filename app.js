@@ -1,7 +1,8 @@
-/* ESOC V2 · navegação, catálogo, busca e impressão locais. */
+/* ESOC V4 · navegação, catálogo, busca e impressão locais. */
 (() => {
   'use strict';
 
+  // 01 · Elementos da página, preferências e estado compartilhado.
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
@@ -27,6 +28,7 @@
   }));
   const blockTopics = collapses.filter(item => item.button.dataset.collapse !== 'section');
 
+  // 02 · Estado de leitura, revelação por âncora e controles de recolhimento.
   function enter(panel) {
     if (state.paused) return;
     panel.classList.remove('revealing');
@@ -61,6 +63,9 @@
     });
     for (let node = target; node; node = node.parentElement) {
       if (node.tagName === 'DETAILS') node.open = true;
+      if (node.hasAttribute('data-demand-panel') && node.hidden) {
+        document.querySelector('button[data-demand][aria-controls="' + node.id + '"]')?.click();
+      }
       if (node.matches('[role="tabpanel"][hidden]')) document.querySelector(`[role="tab"][aria-controls="${node.id}"]`)?.click();
       if (node.classList.contains('reveal-ready')) node.classList.add('has-entered');
     }
@@ -107,7 +112,7 @@
     requestAnimationFrame(revealHash);
   }
 
-  // Abas acessíveis para explorar os componentes da solução.
+  // 03 · Abas da solução, fases do ciclo e três rotas. Setas, Home e End movem o foco.
   function initTabs() {
     $$('[role="tablist"]').forEach(group => {
       const tabs = $$('[role="tab"]', group);
@@ -124,7 +129,7 @@
         announce(tab.textContent.trim());
         queueScroll();
       };
-      if (tabs.length) select(tabs[0]);
+      if (tabs.length) select(tabs.find(tab => tab.getAttribute('aria-selected') === 'true') || tabs[0]);
       group.addEventListener('click', event => {
         const tab = event.target.closest('[role="tab"]');
         if (tabs.includes(tab)) select(tab);
@@ -140,6 +145,51 @@
     });
   }
 
+  // 04 · Rotas da reunião decisória e ordem das fases da concorrência.
+  function initDemand() {
+    const flow = $('.demand-flow');
+    const buttons = $$('[data-demand]', flow);
+    const destination = $('#flow-destination', flow);
+    const select = (selected, notify) => {
+      buttons.forEach(button => {
+        const active = selected === button;
+        button.setAttribute('aria-pressed', String(active));
+        const panel = document.getElementById(button.getAttribute('aria-controls'));
+        panel.hidden = !active;
+        if (active && notify) enter(panel);
+      });
+      destination.hidden = selected.dataset.demand === '3';
+      if (notify) {
+        announce('Rota ' + selected.dataset.demand + '. ' + $('strong', selected).textContent.trim());
+        queueScroll();
+      }
+    };
+    buttons.forEach(button => button.addEventListener('click', () => select(button, true)));
+    select(buttons.find(button => button.getAttribute('aria-pressed') === 'true') || buttons[0], false);
+  }
+
+  function initPhaseOrder() {
+    const toggle = $('#phase-order');
+    const steps = $('#competition-steps');
+    const labels = [$('#competition-first', steps), $('#competition-second', steps)];
+    const stages = labels.map(label => [label.textContent, label.nextElementSibling.textContent]);
+    const update = () => {
+      labels.forEach((label, i) => {
+        const [name, description] = stages[toggle.checked ? 1 - i : i];
+        label.textContent = name;
+        label.nextElementSibling.textContent = description;
+      });
+    };
+    toggle.closest('.order-switch').hidden = false;
+    update();
+    toggle.addEventListener('change', () => {
+      update();
+      enter(steps);
+      announce(labels.map(label => label.textContent).join(', ') + ', adjudicação e homologação.');
+    });
+  }
+
+  // 05 · Movimento, menu lateral e posição de leitura.
   function syncMotion() {
     document.documentElement.classList.toggle('motion-paused', state.paused);
     ui.motion.setAttribute('aria-pressed', String(state.paused));
@@ -224,6 +274,7 @@
     requestAnimationFrame(updateScroll);
   }
 
+  // 06 · Índice local das fichas e filtros do catálogo.
   const files = $$('.es-file');
   const query = $('#catalog-query');
   const family = $('#catalog-family');
@@ -254,9 +305,10 @@
     filterCatalog();
   }
 
+  // 07 · Busca textual em todas as seções, inclusive as recolhidas.
   function initSearch() {
     const index = sections.map(section => ({ id: section.id, number: section.dataset.number,
-      label: section.dataset.label, title: $('h1,h2,summary', section).textContent.replace(/\s+/g, ' ').trim(), text: normalize(section.textContent) }));
+      label: section.dataset.label, title: $('h1,h2,summary', section).textContent.replace(/\s+/g, ' ').trim(), text: normalize([section.dataset.searchAlias, section.textContent].filter(Boolean).join(" ")) }));
     files.forEach((file, i) => index.push({
       id: file.id, number: 'Ficha ' + String(i + 1).padStart(2, '0'),
       label: $('summary strong', file).textContent, title: $('summary small', file).textContent, text: fileIndex.get(file)
@@ -272,7 +324,9 @@
         const content = document.createElement('span');
         const label = document.createElement('strong'); label.textContent = section.label;
         const title = document.createElement('small'); title.textContent = section.title;
-        content.append(label, title); button.append(number, content); fragment.append(button);
+        content.append(label);
+        if (section.title !== section.label) content.append(title);
+        button.append(number, content); fragment.append(button);
       });
       ui.results.replaceChildren(fragment);
     };
@@ -300,6 +354,7 @@
     });
   }
 
+  // 08 · Impressão integral e restauração do estado anterior.
   function initPrint() {
     window.addEventListener('beforeprint', () => {
       if (state.printing) return;
@@ -327,7 +382,10 @@
     });
   }
 
+  // 09 · Inicialização após o carregamento do HTML (script defer).
   initTabs();
+  initDemand();
+  initPhaseOrder();
   initCatalog();
   initCollapse();
   initMenu();

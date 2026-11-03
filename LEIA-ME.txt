@@ -1,5 +1,5 @@
 ESOC · ARTEFATOS DAS AQUISIÇÕES COMPLEXAS
-COLOG / Assessoria de Aquisições Complexas · Versão 2
+COLOG / Assessoria de Aquisições Complexas · Versão 4
 2 de novembro de 2026
 
 ABERTURA E ARQUIVOS
@@ -22,26 +22,88 @@ modelo GCV V9. O menu organiza os conceitos, casos e artefatos em quatro blocos:
 
   Introdução                                                #inicio
   1 · Objeto e solução                                      #bloco-1
-      1.1 Aquisição complexa                                #aquisicao
-      1.2 Classificações                                    #classificacoes
-      1.3 Do sistema à contratação                         #conceitos
+      1.1 O que torna a aquisição complexa?                     #aquisicao
+      1.2 Quatro perguntas sobre o mesmo objeto                 #classificacoes
+      1.3 Do SMEM ao conjunto de obrigações                     #conceitos
   2 · Decisão e processo                                    #bloco-2
-      2.1 Licitação e contratação direta                    #caminhos
-      2.2 Fase preparatória                                 #preparacao
-      2.3 Do ad hoc às três rotas                           #historico
+      2.1 Do estudo de viabilidade à definição da rota          #preparacao
+      2.2 O que a experiência do ad hoc revelou                 #historico
+      2.3 Licitar ou contratar diretamente                      #caminhos
   3 · Artefatos e rotas                                     #bloco-3
-      3.1 Catálogo de artefatos                             #catalogo
-      3.2 Diálogo competitivo                               #dialogo
-      3.3 Concorrência por técnica e preço                  #concorrencia
-      3.4 Contratação direta                                #contratacao-direta
-      3.5 Mapa e matriz de riscos                           #riscos
-      3.6 Pesquisa e justificativa de preço                 #pesquisa
+      3.1 Os documentos do processo                             #catalogo
+      3.2 O processo recomendado.                               #recomendado
+      3.3 Mudar o processo. Adequar-se à norma.                 #evolucao
+      3.4 Rota 1 · Diálogo competitivo                          #dialogo
+      3.5 Rota 2 · Concorrência por técnica e preço             #concorrencia
+      3.6 Rota 3 · Contratação direta                           #contratacao-direta
+      3.7 Um evento, dois registros                             #riscos
+      3.8 Do dado de mercado ao preço justificável              #pesquisa
   4 · Condições da contratação                              #bloco-4
-      4.1 Sigilo e publicidade                              #sigilo
-      4.2 Forma presencial                                  #presencial
-      4.3 Âmbito internacional                              #internacional
+      4.1 Quais informações podem ser divulgadas?               #sigilo
+      4.2 Forma eletrônica ou presencial                        #presencial
+      4.3 Licitação internacional e obtenção no exterior        #internacional
   Conclusão e quadro comparativo                            #comparar-rotas
   Siglas/Referências                                         #referencias
+
+ALTERAÇÕES DA V4
+
+Os 17 tópicos mantêm os endereços da V3. Os títulos do menu lateral e dos
+índices de bloco correspondem aos títulos dos tópicos. A busca também
+reconhece as denominações curtas da edição anterior.
+
+No tópico 2.1, a sequência documental acompanha a pré-concepção, a concepção
+e a obtenção. A preparatória e a externa aparecem dentro da fase de obtenção.
+As fichas do catálogo e as referências reúnem os fundamentos por documento.
+
+A conclusão apresenta um único quadro em #comparar-rotas. As linhas de
+fundo comum valem para as três rotas. As colunas separam as peças e
+finalidades que mudam na preparação, na seleção e na decisão.
+No bloco 4, os diagramas comparam o tratamento da informação, os registros
+da sessão eletrônica ou presencial e os dois enquadramentos internacionais.
+Os três tópicos usam o padrão visual da reunião decisória: um nó central
+liga os cartões de escolha ao percurso correspondente. São quatro situações
+de acesso no 4.1, duas formas de sessão no 4.2 e dois enquadramentos no 4.3.
+Clique no cartão ou use as setas, Home e End com o foco nas alternativas.
+A faixa explicativa, as etapas, as fichas e as normas acompanham a seleção.
+Na impressão, todos os percursos aparecem com seus títulos.
+
+Na matriz dos instrumentos internacionais, o azul suave assinala os pedidos
+de informação ou cotação e o dourado, os de proposta ou oferta final.
+Os nomes dos instrumentos e a descrição da finalidade acompanham a cor.
+
+REFERÊNCIAS NORMATIVAS
+
+Os nomes das normas são links no texto, nos fundamentos das 21 fichas e
+em Siglas/Referências. As citações remetem ao diploma correspondente.
+Os links de leis, decreto, instruções normativas e portaria do Ministério
+da Defesa apontam para portais oficiais. Para EB10-IG-01.018 e
+EB40-IR-20.001, os links levam às íntegras oficiais das portarias e das instruções no
+SG8 da Secretaria-Geral do Exército. A Lei nº 8.666/1993 aparece no
+contexto histórico. A indicação de vigência do diálogo competitivo deve
+ser revista nas futuras edições com base nos atos citados.
+
+ORGANIZAÇÃO DOS ARQUIVOS E PADRÕES
+
+O index.html contém o texto, as tabelas, os ícones SVG e os diagramas,
+organizados em introdução, blocos, tópicos, conclusão e referências. Cada
+tópico tem id estável, data-number, data-label e um painel vinculado ao
+botão pelo atributo aria-controls. Ao incluir um tópico, ajuste os dois
+índices e confira a numeração e o rótulo acessível dos controles.
+
+O styles.css concentra os estilos de tela, as adaptações por largura,
+o movimento reduzido e a impressão. Cada bloco compatível organiza seus
+seletores em ordem alfabética. Declarações compatíveis de um seletor são
+reunidas. As exceções separam contextos de mídia, estados e regras cuja
+ordem afeta a cascata. Azul identifica referências e escolhas, dourado
+assinala etapas ou pontos de atenção. Rótulos, setas e ícones acompanham
+as cores. Em telas estreitas, a matriz exibe os nomes das colunas junto
+aos valores.
+
+O app.js inicializa os controles a partir do HTML. As abas aceitam as
+teclas de direção, Home e End. Os botões do diagrama da demanda alternam
+a explicação e o destino de cada rota. O mesmo arquivo cuida do menu,
+dos filtros das fichas, da busca, do recolhimento e da impressão. Preserve
+os atributos de controle ao editar os diagramas.
 
 CONSULTA E IMPRESSÃO
 
@@ -85,7 +147,7 @@ de escrita ao repositório abaixo.
   Branch padrão   main
 
 1. Preencha os três campos. Enter aceita o valor sugerido em cada um.
-   Título da atualização — Enter usa ESOC_ART_V2 nesta pasta.
+   Título da atualização — Enter usa ESOC_ART_V4 nesta pasta.
    Descrição do que mudou — escreva, por exemplo, “Ajuste do rodapé e das
    referências”. Enter usa Brito.
    Branch de destino no GitHub — pressione Enter para usar main ou digite
