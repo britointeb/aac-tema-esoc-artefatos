@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-/* ESOC V4 — folha única organizada.
+/* ESOC V5 — folha única organizada.
  * Seletores em ordem alfabética em cada bloco compatível.
  * Blocos de continuidade preservam os empates da cascata original.
  * Media queries e estados mantêm regras próprias. Consulte LEIA-ME.txt.
@@ -1221,14 +1221,14 @@
 }
 
 .es-sintese .es-comum td {
-  background: #eef5f4;
-  border-left: 3px solid #577e79;
+  background: #f1f4f6;
+  border-left: 3px solid #657784;
 }
 
 .es-sintese .es-comum td::before {
   display: block;
   margin-bottom: .25rem;
-  color: #ff2200;
+  color: #465b69;
   content: attr(data-col);
   font-size: .74rem;
   font-weight: 700;
@@ -7561,3 +7561,265 @@ svg {
   }
 }
 
+/* V5 · Matriz da conclusão. Cada célula conserva o rótulo da rota no celular. */
+.es-sintese .rota-dialogo {
+  background-color: #e5f3e8;
+}
+
+.es-sintese .rota-concorrencia {
+  background-color: #fff0db;
+}
+
+.es-sintese .rota-direta {
+  background-color: #fbe7e7;
+}
+
+.es-sintese td > b {
+  display: block;
+}
+
+.es-sintese td > b + b {
+  margin-top: .35rem;
+}
+
+/* V5 · Comparação dos momentos da decisão, incorporada do GCV V9. */
+#decisao .decision-gradients {
+  display: grid;
+  gap: 24px;
+  padding: 32px clamp(16px, 3vw, 35px) 0;
+}
+
+#decisao .gradient-arrow {
+  display: grid;
+  place-items: center;
+  min-height: 76px;
+  margin: 0;
+  padding: 20px 8%;
+  background: linear-gradient(90deg, #9d1738, #965112 33%, #276953 66%, #174875);
+  clip-path: polygon(0 50%, 6% 0, 6% 13%, 94% 13%, 94% 0, 100% 50%, 94% 100%, 94% 87%, 6% 87%, 6% 100%);
+  color: white;
+  font: 700 clamp(1rem, 1.6vw, 1.25rem)/1.35 Arial, sans-serif;
+  text-align: center;
+}
+
+#decisao .gradient-endpoints {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 8px;
+  color: #485c69;
+  font-size: .8rem;
+}
+
+#decisao .gradient-endpoints > :last-child {
+  text-align: right;
+}
+
+#decisao .timing-track {
+  --inset: clamp(16px, 3vw, 35px);
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+  padding: 38px var(--inset);
+}
+
+#decisao .timing-track::before {
+  position: absolute;
+  top: 56px;
+  right: var(--inset);
+  left: var(--inset);
+  height: 1px;
+  background: #bfccd1;
+  content: "";
+}
+
+#decisao .timing-track button {
+  position: relative;
+  display: grid;
+  justify-items: start;
+  grid-template-rows: auto auto 1fr auto;
+  gap: .8rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #203649;
+  text-align: left;
+  cursor: pointer;
+}
+
+#decisao .time-dot {
+  display: inline-grid;
+  place-items: center;
+  width: 37px;
+  height: 37px;
+  margin-bottom: .35rem;
+  border: 1px solid #bbc8ce;
+  border-radius: 50%;
+  background: white;
+  font-size: .8rem;
+}
+
+#decisao [role="tab"][aria-selected="true"] .time-dot {
+  border-color: var(--signal);
+  background: var(--signal);
+  box-shadow: 0 0 0 5px var(--halo);
+  color: white;
+  font-weight: 700;
+}
+
+#decisao [data-timing="0"] { --signal: #98354a; --halo: #f8e7eb; }
+#decisao [data-timing="1"] { --signal: #86500e; --halo: #f7eddb; }
+#decisao [data-timing="2"] { --signal: #28664f; --halo: #e6f2eb; }
+
+#decisao .timing-track small,
+#decisao .timing-signal,
+#decisao .risk-variables > :first-child {
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+}
+
+#decisao .timing-track strong {
+  font-size: clamp(1.15rem, 2vw, 1.65rem);
+  line-height: 1.25;
+}
+
+#decisao .timing-label,
+#decisao .risk-variables > :not(:first-child) {
+  padding: .25rem .6rem;
+  border: 1px solid #d3dde2;
+  border-radius: 3px;
+  font-size: .8rem;
+}
+
+#decisao [aria-selected="true"] .timing-label {
+  border-color: var(--signal);
+  background: var(--halo);
+}
+
+#decisao .timing-detail {
+  padding: clamp(18px, 3vw, 36px);
+  border-top: 1px solid #c9d8df;
+  background: #edf4f8;
+}
+
+#decisao .timing-detail h3,
+#decisao .study-comparison h3 {
+  margin: .6rem 0;
+  color: #214a64;
+}
+
+#decisao .timing-detail p,
+#decisao .study-comparison p {
+  margin: 0;
+}
+
+#decisao .timing-signal { color: #245741; }
+#decisao .timing-signal.caution { color: #8f3145; }
+#decisao .timing-signal.intermediate { color: #80500d; }
+
+#decisao .risk-variables {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .55rem .8rem;
+  padding: 18px clamp(16px, 3vw, 35px);
+  border-top: 1px solid var(--line);
+}
+
+#decisao .study-comparison {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(8rem, .6fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(16px, 3vw, 36px);
+  margin: 3rem 0 1.5rem;
+  padding: clamp(16px, 2vw, 28px);
+  background: #edf4f8;
+}
+
+#decisao .study-comparison h3 {
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+#decisao .study-bridge {
+  padding: 1rem 0;
+  border-block: 1px solid #bbcbd3;
+  color: #765016;
+  text-align: center;
+}
+
+#decisao .study-bridge > span {
+  display: block;
+  color: #647886;
+  font-size: 2rem;
+}
+
+#decisao .etp-details details {
+  border-block: 1px solid var(--line);
+}
+
+#decisao .etp-details summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0;
+  cursor: pointer;
+}
+
+#decisao .etp-details details[open] summary span { transform: rotate(45deg); }
+#decisao .etp-details details > div { padding-bottom: 1rem; }
+
+#decisao .decision-quote {
+  margin: 2.5rem 0 0;
+  padding: clamp(18px, 3vw, 36px);
+  border-left: 3px solid #c8aa51;
+  background: #faf5e5;
+}
+
+#decisao .decision-quote p {
+  margin: .75rem 0 0;
+  font-size: clamp(1.35rem, 2.5vw, 2rem);
+  line-height: 1.35;
+  text-align: left;
+}
+
+@media screen and (max-width: 640px) {
+  #decisao .timing-track,
+  #decisao .study-comparison {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  #decisao .timing-track::before { display: none; }
+
+  #decisao .timing-track button {
+    grid-template-columns: 37px 1fr;
+    grid-template-rows: auto auto auto;
+    column-gap: 1rem;
+    row-gap: .3rem;
+    padding: .55rem 0;
+  }
+
+  #decisao .time-dot { grid-row: 1 / 4; }
+  #decisao .timing-track strong br,
+  #decisao .study-bridge br { display: none; }
+  #decisao .study-bridge > span { transform: rotate(90deg); }
+}
+
+@media print {
+  .es-sintese,
+  #decisao .gradient-arrow {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  #decisao .interaction-hint { display: none; }
+  #decisao .timing-detail[hidden] { display: block !important; }
+
+  #decisao .timing-detail,
+  #decisao .study-comparison,
+  #decisao .decision-quote {
+    break-inside: avoid;
+  }
+}

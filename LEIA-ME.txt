@@ -1,6 +1,6 @@
 ESOC · ARTEFATOS DAS AQUISIÇÕES COMPLEXAS
-COLOG / Assessoria de Aquisições Complexas · Versão 4
-2 de novembro de 2026
+COLOG / Assessoria de Aquisições Complexas · Versão 5
+3 de novembro de 2026
 
 ABERTURA E ARQUIVOS
 
@@ -28,7 +28,8 @@ modelo GCV V9. O menu organiza os conceitos, casos e artefatos em quatro blocos:
   2 · Decisão e processo                                    #bloco-2
       2.1 Do estudo de viabilidade à definição da rota          #preparacao
       2.2 O que a experiência do ad hoc revelou                 #historico
-      2.3 Licitar ou contratar diretamente                      #caminhos
+      2.3 O momento da decisão muda o que sabemos.              #decisao
+      2.4 Licitar ou contratar diretamente                      #caminhos
   3 · Artefatos e rotas                                     #bloco-3
       3.1 Os documentos do processo                             #catalogo
       3.2 O processo recomendado.                               #recomendado
@@ -44,6 +45,20 @@ modelo GCV V9. O menu organiza os conceitos, casos e artefatos em quatro blocos:
       4.3 Licitação internacional e obtenção no exterior        #internacional
   Conclusão e quadro comparativo                            #comparar-rotas
   Siglas/Referências                                         #referencias
+
+ALTERAÇÕES DA V5
+
+O tópico 2.3 incorpora a comparação dos três momentos da decisão do GCV V9.
+Selecione um ponto no tempo com o mouse ou use as setas do teclado. Abaixo
+da comparação entre EV e ETP, abra a pergunta sobre o planejamento.
+O tópico sobre licitação e contratação direta passa a 2.4 e conserva o
+endereço #caminhos. A edição reúne 18 tópicos.
+
+O caso da VBC OAP 155 mm SR aparece no tópico 3.5, após a etapa 05,
+“Concluir a seleção”. A matriz da conclusão usa os títulos do catálogo 3.1
+e cada título abre sua ficha. Verde-claro identifica o diálogo competitivo,
+laranja-claro a concorrência por técnica e preço e vermelho-claro a
+contratação direta. As células comuns às três rotas têm fundo neutro.
 
 ALTERAÇÕES DA V4
 
@@ -147,7 +162,7 @@ de escrita ao repositório abaixo.
   Branch padrão   main
 
 1. Preencha os três campos. Enter aceita o valor sugerido em cada um.
-   Título da atualização — Enter usa ESOC_ART_V4 nesta pasta.
+   Título da atualização — Enter usa ESOC_ART_V5 nesta pasta.
    Descrição do que mudou — escreva, por exemplo, “Ajuste do rodapé e das
    referências”. Enter usa Brito.
    Branch de destino no GitHub — pressione Enter para usar main ou digite

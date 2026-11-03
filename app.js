@@ -1,4 +1,4 @@
-/* ESOC V4 · navegação, catálogo, busca e impressão locais. */
+/* ESOC V5 · navegação, catálogo, busca e impressão locais. */
 (() => {
   'use strict';
 
